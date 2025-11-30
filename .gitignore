@@ -1,0 +1,60 @@
+# =========================
+# PYTHON / FASTAPI
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+instance/
+.env
+venv/
+env/
+ENV/
+.venv/
+
+# FastAPI generated files
+*.log
+
+# =========================
+# BACKEND SPECIFIC
+# =========================
+# SQLite database (important!)
+backend/*.db
+backend/*.sqlite3
+
+# Cache & compiled data
+backend/__pycache__/
+backend/**/*.pyc
+
+# =========================
+# NODE / REACT FRONTEND
+# =========================
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env
+
+# React artifacts
+*.cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# =========================
+# OS / EDITOR FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+.idea/
+
+# =========================
+# DOCKER
+# =========================
+*.pid
+docker-data/
