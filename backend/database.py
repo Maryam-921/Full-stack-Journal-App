@@ -3,6 +3,10 @@ from .sentiment import analyze_sentiment
 
 path = "journal.db"
 
+def set_path(new_path):
+    global path
+    path = new_path
+
 def get_connection():
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
@@ -80,7 +84,7 @@ def get_user(username):
         return None
     return row
 
-def create_entry(user_id, subject, content, created_at):
+def create_entry(user_id, subject, content):
 
     sentiment = analyze_sentiment(content)
 
@@ -90,12 +94,11 @@ def create_entry(user_id, subject, content, created_at):
         """
         INSERT INTO entries (user_id, subject, content, 
         positive_score, negative_score,
-        compound_score, sentiment, created_at) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        compound_score, sentiment) 
+        VALUES (?, ?, ?, ?, ?, ?, ?);
         """,
         (user_id, subject, content, sentiment['positive'], 
-        sentiment['negative'], sentiment['compound'], sentiment['sentiment'],
-        created_at)
+        sentiment['negative'], sentiment['compound'], sentiment['sentiment'])
     )
     conn.commit()
     conn.close()

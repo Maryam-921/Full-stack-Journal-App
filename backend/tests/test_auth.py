@@ -1,5 +1,21 @@
 from fastapi.testclient import TestClient
 from ..main import app
+from .. import database
+import os
+
+# Override the DB path for tests
+TEST_DB = "journal_test.db"
+
+def setup_module():
+    # Ensure a clean test DB file
+    if os.path.exists(TEST_DB):
+        os.remove(TEST_DB)
+
+    # Override the database path
+    database.set_path(TEST_DB)
+
+    # Create fresh tables
+    database.set_database()
 
 client = TestClient(app)
 
@@ -11,9 +27,9 @@ def test_signup():
     })
 
     assert response.status_code == 200
-    data = response.json()
-    assert "result" in data
-    assert data["result"]["message"] == "User created successfully!"
+    result = response.json()["result"]
+    assert "message" in result
+    assert result["message"] == "User created successfully!"
 
 def test_signup_duplicate():
     # signing up the same user again
