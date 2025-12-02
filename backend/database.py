@@ -1,5 +1,5 @@
 import sqlite3
-from .sentiment import analyze_sentiment
+from sentiment import analyze_sentiment
 
 path = "journal.db"
 

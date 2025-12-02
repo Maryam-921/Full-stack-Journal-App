@@ -16,20 +16,6 @@ from datetime import datetime, timedelta
 SECRET_KEY = "my_secret"
 ALGORITHM = "HS256"
 
-# JWT GENERATOR FUNCTION
-# def create_access_token(data: dict, expires_delta: timedelta = None):
-#     to_encode = data.copy()
-
-#     if expires_delta:
-#         expire = datetime.utcnow() + expires_delta
-#     else:
-#         expire = datetime.utcnow() + timedelta(minutes=15)
-
-#     to_encode.update({"exp": expire})
-
-#     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-#     return encoded_jwt
-
 def create_access_token(data: dict):
     to_encode = data.copy()
     to_encode["exp"] = datetime.utcnow() + timedelta(hours=1)
@@ -37,8 +23,8 @@ def create_access_token(data: dict):
     return encoded_jwt
 
 # IMPLEMENT SIGNUP
-from .models import Signup, Login
-from .database import create_user, get_user
+from models import Signup, Login
+from database import create_user, get_user
 
 def signup_user(user: Signup):
     hashed_pw = hash_password(user.password)

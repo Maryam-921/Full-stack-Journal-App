@@ -1,12 +1,12 @@
 from fastapi import FastAPI, Header
-from .models import Login, Signup, Entry
-from .auth import signup_user, login_user, get_current_user
-from .database import create_entry, set_database, see_users, delete_tabels, get_journal_entries
+from models import Login, Signup, Entry
+from auth import signup_user, login_user, get_current_user
+from database import create_entry, set_database, see_users, delete_tabels, get_journal_entries
 from fastapi.middleware.cors import CORSMiddleware
 
 # delete_tabels()
+# see_users()
 set_database()
-see_users()
 
 import random
 from datetime import datetime, timedelta
