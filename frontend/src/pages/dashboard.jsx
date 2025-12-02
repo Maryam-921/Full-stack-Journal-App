@@ -135,8 +135,8 @@ function Dashboard() {
                                 </p>
 
                                 <div style={{ fontSize: "24px" }}>
-                                    {entry.sentiment === "positive" ? "😊" :
-                                    entry.sentiment === "negative" ? "😞" : "😐"}
+                                    {entry.sentiment === "Positive" ? "😊" :
+                                    entry.sentiment === "Negative" ? "😞" : "😐"}
                                 </div>
                             </div>
                         ))}
