@@ -23,8 +23,8 @@ def create_access_token(data: dict):
     return encoded_jwt
 
 # IMPLEMENT SIGNUP
-from models import Signup, Login
-from database import create_user, get_user
+from .models import Signup, Login
+from .database import create_user, get_user
 
 def signup_user(user: Signup):
     hashed_pw = hash_password(user.password)
